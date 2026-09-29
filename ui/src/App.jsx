@@ -1,9 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { initialNotebooks } from "./sampleData";
 
-function replyFor(text) {
-  return `Here is the full answer for: ${text}\n\nThis reply arrives in one response. The screen waits, then shows the complete message.`;
-}
+const API_BASE = "http://localhost:8000";
 
 export default function App() {
   const [chats, setChats] = useState([]);
@@ -15,6 +13,14 @@ export default function App() {
   const [pending, setPending] = useState(false);
   const [historyQuery, setHistoryQuery] = useState("");
   const [model, setModel] = useState("Pro");
+
+  // Load history on mount
+  useEffect(() => {
+    fetch(`${API_BASE}/chats`)
+      .then((res) => res.json())
+      .then((data) => setChats(data))
+      .catch((err) => console.error("Failed to load history", err));
+  }, []);
 
   const activeChat = chats.find((chat) => chat.id === activeChatId) ?? null;
 
@@ -56,41 +62,62 @@ export default function App() {
     ]);
   }
 
-  function sendMessage() {
+  async function sendMessage() {
     const text = draft.trim();
     if (!text || pending) return;
 
-    const userMessage = { id: `user-${Date.now()}`, role: "user", content: text };
-    const chatId = activeChatId ?? `chat-${Date.now()}`;
-    const title = text.length > 42 ? `${text.slice(0, 42)}...` : text;
-
-    setDraft("");
     setPending(true);
-    setActiveChatId(chatId);
+    let chatId = activeChatId;
 
-    setChats((current) => {
-      const existing = current.find((chat) => chat.id === chatId);
-      if (!existing) {
-        return [{ id: chatId, title, updatedAt: "Today", messages: [userMessage] }, ...current];
+    try {
+      // 1. Create chat if this is a new conversation
+      if (!chatId) {
+        const title = text.length > 42 ? `${text.slice(0, 42)}...` : text;
+        const res = await fetch(`${API_BASE}/chats`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title }),
+        });
+        const newChat = await res.json();
+        chatId = newChat.id;
+        setActiveChatId(chatId);
+        setChats((current) => [newChat, ...current]);
       }
-      return current.map((chat) =>
-        chat.id === chatId ? { ...chat, updatedAt: "Today", messages: [...chat.messages, userMessage] } : chat
-      );
-    });
 
-    window.setTimeout(() => {
-      const assistantMessage = {
-        id: `assistant-${Date.now()}`,
-        role: "assistant",
-        content: replyFor(text),
-      };
+      // Optimistically add user message
+      const tempUserMsg = { id: `temp-${Date.now()}`, role: "user", content: text };
       setChats((current) =>
         current.map((chat) =>
-          chat.id === chatId ? { ...chat, messages: [...chat.messages, assistantMessage] } : chat
+          chat.id === chatId
+            ? { ...chat, messages: [...chat.messages, tempUserMsg] }
+            : chat
         )
       );
+      setDraft("");
+
+      // 2. Send the message to the API
+      const res = await fetch(`${API_BASE}/chats/${chatId}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: text, model }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      const data = await res.json();
+      
+      // Update with the full chat returned by the server
+      setChats((current) =>
+        current.map((chat) => (chat.id === chatId ? data.chat : chat))
+      );
+    } catch (err) {
+      console.error("Error sending message:", err);
+      alert("Failed to get an answer from the API.");
+    } finally {
       setPending(false);
-    }, 700);
+    }
   }
 
   return (
@@ -226,7 +253,7 @@ function ChatScreen({ chat, hasHistory, draft, pending, model, onDraft, onModel,
           </div>
         )}
         {messages.map((message) => (
-          <article key={message.id} className={message.role === "user" ? "message user" : "message assistant"}>
+          <article key={message.id || message.role + message.content} className={message.role === "user" ? "message user" : "message assistant"}>
             {message.role === "assistant" ? <Answer text={message.content} /> : <p>{message.content}</p>}
           </article>
         ))}
@@ -276,7 +303,7 @@ function HistoryScreen({ chats, query, onQuery, onOpen }) {
 }
 
 function Answer({ text }) {
-  const blocks = text.split("\n");
+  const blocks = (text || "").split("\n");
   return (
     <div className="answer">
       {blocks.map((line, index) => {
