@@ -52,7 +52,7 @@ public sealed class QdrantVectorStore : IVectorStore
         
         var filter = new Filter
         {
-            Must = { new Condition { FieldMatch = new FieldCondition { Key = "chatId", Match = new Match { Keyword = chatId ?? "" } } } }
+            Must = { new Condition { Field = new FieldCondition { Key = "chatId", Match = new Match { Keyword = chatId ?? "" } } } }
         };
 
         var points = await _client.SearchAsync(
