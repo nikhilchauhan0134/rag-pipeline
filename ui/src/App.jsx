@@ -39,6 +39,7 @@ export default function App() {
 
   function openChat(id) {
     setActiveChatId(id);
+    setUploadedFile(null);
     setScreen("chat");
   }
 
@@ -52,6 +53,7 @@ export default function App() {
 
   function startNewChat() {
     setActiveChatId(null);
+    setUploadedFile(null);
     setDraft("");
     setScreen("chat");
   }
