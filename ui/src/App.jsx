@@ -128,11 +128,12 @@ export default function App() {
 
     setUploading(true);
     try {
-      const text = await file.text();
+      const formData = new FormData();
+      formData.append("file", file);
+
       const res = await fetch("http://localhost:8000/documents", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
+        body: formData,
       });
       if (!res.ok) throw new Error("Upload failed");
       
@@ -382,7 +383,7 @@ function Composer({ draft, model, pending, uploadedFile, uploading, onDraft, onM
       >
         <label className="plus" aria-label="Add Document" style={{ cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <PlusIcon />
-          <input type="file" accept=".txt,.md,.json" style={{ display: "none" }} onChange={(e) => {
+          <input type="file" accept=".txt,.md,.pdf" style={{ display: "none" }} onChange={(e) => {
              onUpload(e);
              e.target.value = null; 
           }} />
