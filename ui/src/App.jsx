@@ -13,6 +13,8 @@ export default function App() {
   const [pending, setPending] = useState(false);
   const [historyQuery, setHistoryQuery] = useState("");
   const [model, setModel] = useState("Pro");
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   // Load history on mount
   useEffect(() => {
@@ -124,6 +126,7 @@ export default function App() {
     const file = event.target.files[0];
     if (!file) return;
 
+    setUploading(true);
     try {
       const text = await file.text();
       const res = await fetch("http://localhost:8000/documents", {
@@ -132,10 +135,14 @@ export default function App() {
         body: JSON.stringify({ text }),
       });
       if (!res.ok) throw new Error("Upload failed");
-      alert("Document successfully processed and added to the Vector Database!");
+      
+      // Store visually as an attached chip
+      setUploadedFile({ name: file.name });
     } catch (err) {
       console.error(err);
       alert("Failed to upload document.");
+    } finally {
+      setUploading(false);
     }
   }
 
@@ -168,10 +175,13 @@ export default function App() {
             draft={draft}
             pending={pending}
             model={model}
+            uploadedFile={uploadedFile}
+            uploading={uploading}
             onDraft={setDraft}
             onModel={setModel}
             onSend={sendMessage}
             onUpload={handleFileUpload}
+            onClearFile={() => setUploadedFile(null)}
           />
         )}
       </main>
@@ -260,7 +270,7 @@ function Sidebar({
   );
 }
 
-function ChatScreen({ chat, hasHistory, draft, pending, model, onDraft, onModel, onSend, onUpload }) {
+function ChatScreen({ chat, hasHistory, draft, pending, model, uploadedFile, uploading, onDraft, onModel, onSend, onUpload, onClearFile }) {
   const messages = chat?.messages ?? [];
 
   return (
@@ -279,7 +289,18 @@ function ChatScreen({ chat, hasHistory, draft, pending, model, onDraft, onModel,
         ))}
         {pending && <p className="pending">Writing the full answer…</p>}
       </div>
-      <Composer draft={draft} model={model} pending={pending} onDraft={onDraft} onModel={onModel} onSend={onSend} onUpload={onUpload} />
+      <Composer 
+        draft={draft} 
+        model={model} 
+        pending={pending} 
+        uploadedFile={uploadedFile} 
+        uploading={uploading} 
+        onDraft={onDraft} 
+        onModel={onModel} 
+        onSend={onSend} 
+        onUpload={onUpload} 
+        onClearFile={onClearFile} 
+      />
       <p className="disclaimer">Answers are shown in full when the response is ready.</p>
     </section>
   );
@@ -337,41 +358,55 @@ function Answer({ text }) {
   );
 }
 
-function Composer({ draft, model, pending, onDraft, onModel, onSend, onUpload }) {
+function Composer({ draft, model, pending, uploadedFile, uploading, onDraft, onModel, onSend, onUpload, onClearFile }) {
   return (
-    <form
-      className="composer"
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSend();
-      }}
-    >
-      <label className="plus" aria-label="Add Document" style={{ cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <PlusIcon />
-        <input type="file" accept=".txt,.md,.json" style={{ display: "none" }} onChange={(e) => {
-           onUpload(e);
-           e.target.value = null; 
-        }} />
-      </label>
-      <input
-        value={draft}
-        placeholder="Ask anything"
-        onChange={(event) => onDraft(event.target.value)}
-      />
-      <label className="model-picker">
-        <span className="sr-only">Model</span>
-        <select value={model} onChange={(event) => onModel(event.target.value)}>
-          <option>Pro</option>
-          <option>Fast</option>
-        </select>
-      </label>
-      <button className="mic" type="button" aria-label="Microphone">
-        <MicIcon />
-      </button>
-      <button className="send" type="submit" disabled={pending || !draft.trim()} aria-label="Send">
-        Send
-      </button>
-    </form>
+    <div className="composer-container">
+      {(uploadedFile || uploading) && (
+        <div className="composer-attachment">
+          <span className="attachment-name">
+            {uploading ? "Uploading..." : uploadedFile.name}
+          </span>
+          {!uploading && (
+            <button type="button" className="attachment-clear" onClick={onClearFile} aria-label="Remove attachment">
+              ✕
+            </button>
+          )}
+        </div>
+      )}
+      <form
+        className="composer"
+        onSubmit={(event) => {
+          event.preventDefault();
+          onSend();
+        }}
+      >
+        <label className="plus" aria-label="Add Document" style={{ cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <PlusIcon />
+          <input type="file" accept=".txt,.md,.json" style={{ display: "none" }} onChange={(e) => {
+             onUpload(e);
+             e.target.value = null; 
+          }} />
+        </label>
+        <input
+          value={draft}
+          placeholder="Ask anything"
+          onChange={(event) => onDraft(event.target.value)}
+        />
+        <label className="model-picker">
+          <span className="sr-only">Model</span>
+          <select value={model} onChange={(event) => onModel(event.target.value)}>
+            <option>Pro</option>
+            <option>Fast</option>
+          </select>
+        </label>
+        <button className="mic" type="button" aria-label="Microphone">
+          <MicIcon />
+        </button>
+        <button className="send" type="submit" disabled={pending || !draft.trim()} aria-label="Send">
+          Send
+        </button>
+      </form>
+    </div>
   );
 }
 
