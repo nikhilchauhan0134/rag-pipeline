@@ -53,15 +53,15 @@ public sealed class DocumentsController : ControllerBase
             return BadRequest(new { error = "The uploaded document contained no readable text." });
         }
 
-        // Extremely simple chunking: split by double newlines, or paragraphs
-        var chunks = text.Split(new[] { "\n\n", "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries)
-                         .Select(c => c.Trim())
-                         .Where(c => c.Length > 0)
-                         .ToList();
-                                 
-        if (chunks.Count == 0)
+        var chunks = new List<string>();
+        int chunkSize = 2000;
+        int overlap = 200;
+
+        for (int i = 0; i < text.Length; i += chunkSize - overlap)
         {
-            chunks.Add(text.Trim());
+            int length = Math.Min(chunkSize, text.Length - i);
+            chunks.Add(text.Substring(i, length));
+            if (i + length >= text.Length) break;
         }
 
         foreach (var chunk in chunks)
