@@ -346,14 +346,33 @@ function HistoryScreen({ chats, query, onQuery, onOpen }) {
 
 function Answer({ text }) {
   const blocks = (text || "").split("\n");
+
+  // Helper to parse **bold** text
+  const parseFormatting = (line) => {
+    const parts = line.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return <strong key={i}>{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="answer">
       {blocks.map((line, index) => {
         const trimmed = line.trim();
         if (!trimmed) return <div key={index} className="spacer" />;
-        if (/^\d+\.\s/.test(trimmed)) return <h2 key={index}>{trimmed}</h2>;
-        if (trimmed.startsWith("•")) return <p key={index} className="bullet">{trimmed}</p>;
-        return <p key={index}>{trimmed}</p>;
+        if (/^\d+\.\s/.test(trimmed)) return <h2 key={index}>{parseFormatting(trimmed)}</h2>;
+        if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
+          // Remove the dash or bullet from the start
+          const textContent = trimmed.replace(/^[•-]\s*/, "");
+          return <p key={index} className="bullet">• {parseFormatting(textContent)}</p>;
+        }
+        if (trimmed.startsWith("#")) {
+          return <h2 key={index}>{parseFormatting(trimmed.replace(/^#+\s*/, ""))}</h2>;
+        }
+        return <p key={index}>{parseFormatting(trimmed)}</p>;
       })}
     </div>
   );
