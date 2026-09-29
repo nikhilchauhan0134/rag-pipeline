@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { initialNotebooks } from "./sampleData";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://ragpipeline-api-latest.onrender.com";
 
 export default function App() {
   const [chats, setChats] = useState([]);
@@ -134,7 +134,7 @@ export default function App() {
       
       // If there's no active chat, create one first before uploading!
       if (!currentChatId) {
-        const res = await fetch("http://localhost:8000/chats", {
+        const res = await fetch("https://ragpipeline-api-latest.onrender.com/chats", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ title: file.name }),
@@ -150,7 +150,7 @@ export default function App() {
       formData.append("file", file);
       formData.append("chatId", currentChatId);
 
-      const res = await fetch("http://localhost:8000/documents", {
+      const res = await fetch("https://ragpipeline-api-latest.onrender.com/documents", {
         method: "POST",
         body: formData,
       });
