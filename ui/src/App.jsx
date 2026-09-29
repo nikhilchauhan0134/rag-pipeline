@@ -120,6 +120,25 @@ export default function App() {
     }
   }
 
+  async function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const res = await fetch("http://localhost:8000/documents", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      if (!res.ok) throw new Error("Upload failed");
+      alert("Document successfully processed and added to the Vector Database!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to upload document.");
+    }
+  }
+
   return (
     <div className="app">
       <Sidebar
@@ -152,6 +171,7 @@ export default function App() {
             onDraft={setDraft}
             onModel={setModel}
             onSend={sendMessage}
+            onUpload={handleFileUpload}
           />
         )}
       </main>
@@ -171,25 +191,6 @@ function Sidebar({
   onOpenChat,
   onAddNotebook,
 }) {
-  async function handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    try {
-      const text = await file.text();
-      const res = await fetch("http://localhost:8000/documents", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
-      });
-      if (!res.ok) throw new Error("Upload failed");
-      alert("Document successfully processed and added to the Vector Database!");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to upload document.");
-    }
-  }
-
   return (
     <aside className={open ? "sidebar" : "sidebar sidebar-collapsed"}>
       <div className="sidebar-top">
@@ -208,10 +209,9 @@ function Sidebar({
             <button type="button" onClick={onNewChat}>
               <ComposeIcon /> New chat
             </button>
-            <label className="nav-upload-button">
-              <LibraryIcon /> Upload Doc
-              <input type="file" accept=".txt,.md,.json" style={{ display: "none" }} onChange={handleFileUpload} />
-            </label>
+            <button type="button">
+              <LibraryIcon /> Library
+            </button>
           </nav>
 
           <section className="side-section">
@@ -260,7 +260,7 @@ function Sidebar({
   );
 }
 
-function ChatScreen({ chat, hasHistory, draft, pending, model, onDraft, onModel, onSend }) {
+function ChatScreen({ chat, hasHistory, draft, pending, model, onDraft, onModel, onSend, onUpload }) {
   const messages = chat?.messages ?? [];
 
   return (
@@ -279,7 +279,7 @@ function ChatScreen({ chat, hasHistory, draft, pending, model, onDraft, onModel,
         ))}
         {pending && <p className="pending">Writing the full answer…</p>}
       </div>
-      <Composer draft={draft} model={model} pending={pending} onDraft={onDraft} onModel={onModel} onSend={onSend} />
+      <Composer draft={draft} model={model} pending={pending} onDraft={onDraft} onModel={onModel} onSend={onSend} onUpload={onUpload} />
       <p className="disclaimer">Answers are shown in full when the response is ready.</p>
     </section>
   );
@@ -337,7 +337,7 @@ function Answer({ text }) {
   );
 }
 
-function Composer({ draft, model, pending, onDraft, onModel, onSend }) {
+function Composer({ draft, model, pending, onDraft, onModel, onSend, onUpload }) {
   return (
     <form
       className="composer"
@@ -346,9 +346,13 @@ function Composer({ draft, model, pending, onDraft, onModel, onSend }) {
         onSend();
       }}
     >
-      <button className="plus" type="button" aria-label="Add">
+      <label className="plus" aria-label="Add Document" style={{ cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <PlusIcon />
-      </button>
+        <input type="file" accept=".txt,.md,.json" style={{ display: "none" }} onChange={(e) => {
+           onUpload(e);
+           e.target.value = null; 
+        }} />
+      </label>
       <input
         value={draft}
         placeholder="Ask anything"
