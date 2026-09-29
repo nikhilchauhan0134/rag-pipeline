@@ -137,7 +137,7 @@ export default function App() {
         const res = await fetch("http://localhost:8000/chats", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({}),
+          body: JSON.stringify({ title: file.name }),
         });
         if (!res.ok) throw new Error("Failed to create chat");
         const newChat = await res.json();
