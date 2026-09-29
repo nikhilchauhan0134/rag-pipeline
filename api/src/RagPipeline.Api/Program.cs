@@ -43,6 +43,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseRouting();
 app.UseCors("ui");
 app.MapControllers();
 
