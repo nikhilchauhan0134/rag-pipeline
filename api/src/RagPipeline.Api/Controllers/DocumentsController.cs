@@ -19,7 +19,7 @@ public sealed class DocumentsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Upload(IFormFile file, CancellationToken cancellationToken)
+    public async Task<IActionResult> Upload([FromForm] IFormFile file, [FromForm] string? chatId, CancellationToken cancellationToken)
     {
         if (file is null || file.Length == 0)
         {
@@ -68,7 +68,7 @@ public sealed class DocumentsController : ControllerBase
         {
             var embedding = _embeddings.Embed(chunk);
             var documentId = Guid.NewGuid().ToString("N");
-            var doc = new VectorDocument(documentId, chunk, embedding);
+            var doc = new VectorDocument(documentId, chatId ?? "", chunk, embedding);
             await _vectors.UpsertAsync(doc, cancellationToken);
         }
 

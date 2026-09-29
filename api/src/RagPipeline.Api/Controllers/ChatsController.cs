@@ -57,7 +57,7 @@ public sealed class ChatsController : ControllerBase
         }
 
         await _history.AddMessageAsync(id, "user", request.Content, cancellationToken);
-        var prompt = await _rag.BuildAsync(request.Content, cancellationToken: cancellationToken);
+        var prompt = await _rag.BuildAsync(id, request.Content, cancellationToken: cancellationToken);
 
         string answer;
         try

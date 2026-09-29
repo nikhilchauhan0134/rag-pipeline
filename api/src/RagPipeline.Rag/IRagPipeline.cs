@@ -11,5 +11,5 @@ public sealed record RagPrompt(string Question, IReadOnlyList<VectorMatch> Passa
 
 public interface IRagPipeline
 {
-    Task<RagPrompt> BuildAsync(string question, int topK = 3, CancellationToken cancellationToken = default);
+    Task<RagPrompt> BuildAsync(string chatId, string question, int topK = 3, CancellationToken cancellationToken = default);
 }

@@ -30,13 +30,14 @@ public sealed class QdrantVectorStore : IVectorStore
         {
             Id = ToPointId(document.Id),
             Vectors = document.Embedding,
-            Payload = { ["text"] = document.Text, ["documentId"] = document.Id },
+            Payload = { ["text"] = document.Text, ["documentId"] = document.Id, ["chatId"] = document.ChatId ?? "" },
         };
 
         await _client.UpsertAsync(_collection, new[] { point }, cancellationToken: cancellationToken);
     }
 
     public async Task<IReadOnlyList<VectorMatch>> SearchAsync(
+        string chatId,
         float[] queryEmbedding,
         int topK,
         CancellationToken cancellationToken = default)
@@ -48,9 +49,16 @@ public sealed class QdrantVectorStore : IVectorStore
         }
 
         await EnsureCollectionAsync(cancellationToken);
+        
+        var filter = new Filter
+        {
+            Must = { new Condition { FieldMatch = new FieldCondition { Key = "chatId", Match = new Match { Keyword = chatId ?? "" } } } }
+        };
+
         var points = await _client.SearchAsync(
             _collection,
             queryEmbedding,
+            filter: filter,
             limit: (ulong)topK,
             cancellationToken: cancellationToken);
 

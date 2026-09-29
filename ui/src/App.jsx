@@ -128,8 +128,25 @@ export default function App() {
 
     setUploading(true);
     try {
+      let currentChatId = activeChatId;
+      
+      // If there's no active chat, create one first before uploading!
+      if (!currentChatId) {
+        const res = await fetch("http://localhost:8000/chats", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        });
+        if (!res.ok) throw new Error("Failed to create chat");
+        const newChat = await res.json();
+        setChats((prev) => [newChat, ...prev]);
+        setActiveChatId(newChat.id);
+        currentChatId = newChat.id;
+      }
+
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("chatId", currentChatId);
 
       const res = await fetch("http://localhost:8000/documents", {
         method: "POST",
@@ -137,7 +154,6 @@ export default function App() {
       });
       if (!res.ok) throw new Error("Upload failed");
       
-      // Store visually as an attached chip
       setUploadedFile({ name: file.name });
     } catch (err) {
       console.error(err);

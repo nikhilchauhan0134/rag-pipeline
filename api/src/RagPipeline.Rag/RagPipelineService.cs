@@ -14,12 +14,12 @@ public sealed class RagPipelineService : IRagPipeline
         _vectors = vectors;
     }
 
-    public async Task<RagPrompt> BuildAsync(string question, int topK = 3, CancellationToken cancellationToken = default)
+    public async Task<RagPrompt> BuildAsync(string chatId, string question, int topK = 3, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(question);
 
         var embedding = _embeddings.Embed(question);
-        var passages = await _vectors.SearchAsync(embedding, topK, cancellationToken);
+        var passages = await _vectors.SearchAsync(chatId, embedding, topK, cancellationToken);
         return new RagPrompt(question.Trim(), passages, WritePrompt(question.Trim(), passages));
     }
 

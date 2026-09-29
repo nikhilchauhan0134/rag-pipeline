@@ -19,6 +19,7 @@ public sealed class InMemoryVectorStore : IVectorStore
     }
 
     public Task<IReadOnlyList<VectorMatch>> SearchAsync(
+        string chatId,
         float[] queryEmbedding,
         int topK,
         CancellationToken cancellationToken = default)
@@ -34,7 +35,7 @@ public sealed class InMemoryVectorStore : IVectorStore
         List<VectorDocument> documents;
         lock (_gate)
         {
-            documents = _documents.Values.ToList();
+            documents = _documents.Values.Where(d => d.ChatId == chatId).ToList();
         }
 
         IReadOnlyList<VectorMatch> matches = documents
