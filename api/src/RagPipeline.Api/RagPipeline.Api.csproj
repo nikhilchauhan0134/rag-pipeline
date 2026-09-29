@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>RagPipeline.WebHost</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RagPipeline.History\RagPipeline.History.csproj" />
+    <ProjectReference Include="..\RagPipeline.Rag\RagPipeline.Rag.csproj" />
+    <ProjectReference Include="..\RagPipeline.VectorDb\RagPipeline.VectorDb.csproj" />
+  </ItemGroup>
+
+</Project>

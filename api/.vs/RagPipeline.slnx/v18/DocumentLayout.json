@@ -1,0 +1,229 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Learning\\RAGPipeline\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.api\\appsettings.local.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|solutionrelative:src\\ragpipeline.api\\appsettings.local.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|solutionrelative:src\\ragpipeline.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|solutionrelative:src\\ragpipeline.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.vectordb\\inmemoryvectorstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|solutionrelative:src\\ragpipeline.vectordb\\inmemoryvectorstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.vectordb\\ivectorstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|solutionrelative:src\\ragpipeline.vectordb\\ivectorstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.vectordb\\vectordocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|solutionrelative:src\\ragpipeline.vectordb\\vectordocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|solutionrelative:src\\ragpipeline.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A0A62AE-0FEF-1ECE-D5FF-C912AEBD6D82}|src\\RagPipeline.History\\RagPipeline.History.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.history\\chatrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A0A62AE-0FEF-1ECE-D5FF-C912AEBD6D82}|src\\RagPipeline.History\\RagPipeline.History.csproj|solutionrelative:src\\ragpipeline.history\\chatrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A0A62AE-0FEF-1ECE-D5FF-C912AEBD6D82}|src\\RagPipeline.History\\RagPipeline.History.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.history\\ichathistorystore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A0A62AE-0FEF-1ECE-D5FF-C912AEBD6D82}|src\\RagPipeline.History\\RagPipeline.History.csproj|solutionrelative:src\\ragpipeline.history\\ichathistorystore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A0A62AE-0FEF-1ECE-D5FF-C912AEBD6D82}|src\\RagPipeline.History\\RagPipeline.History.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.history\\inmemorychathistorystore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A0A62AE-0FEF-1ECE-D5FF-C912AEBD6D82}|src\\RagPipeline.History\\RagPipeline.History.csproj|solutionrelative:src\\ragpipeline.history\\inmemorychathistorystore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.api\\controllers\\chatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|solutionrelative:src\\ragpipeline.api\\controllers\\chatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.api\\ragpipeline.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{277F47C6-8B07-8208-AFFD-C261029E3664}|src\\RagPipeline.Api\\RagPipeline.Api.csproj|solutionrelative:src\\ragpipeline.api\\ragpipeline.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|d:\\learning\\ragpipeline\\api\\src\\ragpipeline.vectordb\\ragpipeline.vectordb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3F061EAF-90F5-1FFB-05A0-BCAE5F7E210F}|src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj|solutionrelative:src\\ragpipeline.vectordb\\ragpipeline.vectordb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "src\\RagPipeline.Api\\appsettings.Development.json",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\appsettings.Development.json",
+              "RelativeToolTip": "src\\RagPipeline.Api\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-28T12:00:30.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VectorDocument.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\VectorDocument.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.VectorDb\\VectorDocument.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\VectorDocument.cs",
+              "RelativeToolTip": "src\\RagPipeline.VectorDb\\VectorDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:45:10.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Local.json",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\appsettings.Local.json",
+              "RelativeDocumentMoniker": "src\\RagPipeline.Api\\appsettings.Local.json",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\appsettings.Local.json",
+              "RelativeToolTip": "src\\RagPipeline.Api\\appsettings.Local.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-28T11:43:11.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\RagPipeline.Api\\appsettings.json",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\appsettings.json",
+              "RelativeToolTip": "src\\RagPipeline.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-28T11:42:50.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\RagPipeline.Api\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\RagPipeline.Api\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-28T11:41:39.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IVectorStore.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\IVectorStore.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.VectorDb\\IVectorStore.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\IVectorStore.cs",
+              "RelativeToolTip": "src\\RagPipeline.VectorDb\\IVectorStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:26:16.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ChatRecord.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.History\\ChatRecord.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.History\\ChatRecord.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.History\\ChatRecord.cs",
+              "RelativeToolTip": "src\\RagPipeline.History\\ChatRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:16:07.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InMemoryVectorStore.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\InMemoryVectorStore.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.VectorDb\\InMemoryVectorStore.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\InMemoryVectorStore.cs",
+              "RelativeToolTip": "src\\RagPipeline.VectorDb\\InMemoryVectorStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:10:21.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IChatHistoryStore.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.History\\IChatHistoryStore.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.History\\IChatHistoryStore.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.History\\IChatHistoryStore.cs",
+              "RelativeToolTip": "src\\RagPipeline.History\\IChatHistoryStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:15:50.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ChatsController.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\Controllers\\ChatsController.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.Api\\Controllers\\ChatsController.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\Controllers\\ChatsController.cs",
+              "RelativeToolTip": "src\\RagPipeline.Api\\Controllers\\ChatsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:15:13.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RagPipeline.Api.http",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\RagPipeline.Api.http",
+              "RelativeDocumentMoniker": "src\\RagPipeline.Api\\RagPipeline.Api.http",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.Api\\RagPipeline.Api.http",
+              "RelativeToolTip": "src\\RagPipeline.Api\\RagPipeline.Api.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-09-28T11:13:15.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "InMemoryChatHistoryStore.cs",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.History\\InMemoryChatHistoryStore.cs",
+              "RelativeDocumentMoniker": "src\\RagPipeline.History\\InMemoryChatHistoryStore.cs",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.History\\InMemoryChatHistoryStore.cs",
+              "RelativeToolTip": "src\\RagPipeline.History\\InMemoryChatHistoryStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T11:10:25.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RagPipeline.VectorDb.csproj",
+              "DocumentMoniker": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj",
+              "RelativeDocumentMoniker": "src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj",
+              "ToolTip": "D:\\Learning\\RAGPipeline\\api\\src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj",
+              "RelativeToolTip": "src\\RagPipeline.VectorDb\\RagPipeline.VectorDb.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-28T11:10:18.695Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

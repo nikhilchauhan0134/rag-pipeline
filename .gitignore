@@ -1,9 +1,12 @@
 .env
 .env.*
 !.env.example
+appsettings.Local.json
 node_modules/
 __pycache__/
 .venv/
 dist/
 build/
+bin/
+obj/
 *.log

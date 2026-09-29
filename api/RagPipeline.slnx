@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/RagPipeline.Api/RagPipeline.Api.csproj" />
+    <Project Path="src/RagPipeline.FineTuning/RagPipeline.FineTuning.csproj" />
+    <Project Path="src/RagPipeline.History/RagPipeline.History.csproj" />
+    <Project Path="src/RagPipeline.Rag/RagPipeline.Rag.csproj" />
+    <Project Path="src/RagPipeline.VectorDb/RagPipeline.VectorDb.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RagPipeline.Api.Tests/RagPipeline.Api.Tests.csproj" />
+    <Project Path="tests/RagPipeline.FineTuning.Tests/RagPipeline.FineTuning.Tests.csproj" />
+    <Project Path="tests/RagPipeline.History.Tests/RagPipeline.History.Tests.csproj" />
+    <Project Path="tests/RagPipeline.Rag.Tests/RagPipeline.Rag.Tests.csproj" />
+    <Project Path="tests/RagPipeline.VectorDb.Tests/RagPipeline.VectorDb.Tests.csproj" />
+  </Folder>
+</Solution>
