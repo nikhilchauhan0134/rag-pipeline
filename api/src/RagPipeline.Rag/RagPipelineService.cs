@@ -26,7 +26,9 @@ public sealed class RagPipelineService : IRagPipeline
     private static string WritePrompt(string question, IReadOnlyList<VectorMatch> passages)
     {
         var prompt = new StringBuilder();
-        prompt.AppendLine("Answer the question using only the passages below.");
+        prompt.AppendLine("You are a helpful and intelligent AI assistant.");
+        prompt.AppendLine("Use the provided contextual Passages to help answer the user's Question or fulfill their request.");
+        prompt.AppendLine("If the user asks you to do something outside your capabilities (like generating a file) or asks a question not covered by the context, respond naturally and politely. Do NOT awkwardly say 'Based on the passages provided...'. Just talk to the user like a normal assistant.");
         prompt.AppendLine();
         prompt.AppendLine("Passages:");
         if (passages.Count == 0)
