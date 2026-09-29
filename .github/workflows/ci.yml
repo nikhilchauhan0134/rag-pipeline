@@ -80,3 +80,15 @@ jobs:
         push: true
         provenance: false
         tags: ghcr.io/nikhilchauhan0134/ragpipeline-ui:latest
+
+    - name: Trigger Render API Deployment
+      if: env.RENDER_API_DEPLOY_HOOK != ''
+      env:
+        RENDER_API_DEPLOY_HOOK: ${{ secrets.RENDER_API_DEPLOY_HOOK }}
+      run: curl -X POST $RENDER_API_DEPLOY_HOOK
+
+    - name: Trigger Render UI Deployment
+      if: env.RENDER_UI_DEPLOY_HOOK != ''
+      env:
+        RENDER_UI_DEPLOY_HOOK: ${{ secrets.RENDER_UI_DEPLOY_HOOK }}
+      run: curl -X POST $RENDER_UI_DEPLOY_HOOK
