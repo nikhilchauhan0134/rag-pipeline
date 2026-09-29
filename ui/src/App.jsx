@@ -407,10 +407,27 @@ function Composer({ draft, model, pending, uploadedFile, uploading, onDraft, onM
              e.target.value = null; 
           }} />
         </label>
-        <input
+        <textarea
           value={draft}
           placeholder="Ask anything"
-          onChange={(event) => onDraft(event.target.value)}
+          rows={1}
+          style={{ resize: "none", fontFamily: "inherit", fontSize: "inherit", overflowY: "auto", maxHeight: "150px" }}
+          onChange={(event) => {
+            onDraft(event.target.value);
+            // Simple auto-resize logic
+            event.target.style.height = 'auto';
+            event.target.style.height = Math.min(event.target.scrollHeight, 150) + 'px';
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' && !event.shiftKey) {
+              event.preventDefault();
+              if (draft.trim() && !pending) {
+                onSend();
+                // Reset height
+                event.target.style.height = 'auto';
+              }
+            }
+          }}
         />
         <label className="model-picker">
           <span className="sr-only">Model</span>

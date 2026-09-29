@@ -241,7 +241,7 @@ button {
 
 .pending { color: #5f6368; }
 
-.composer {
+.composer { align-items: flex-end;
   width: min(820px, calc(100% - 48px));
   margin: 0 auto;
   gap: 8px;
@@ -251,7 +251,7 @@ button {
   box-shadow: 0 8px 24px rgba(60, 64, 67, 0.08);
 }
 
-.composer input {
+.composer input, .composer textarea {
   flex: 1;
   border: 0;
   outline: none;
