@@ -95,6 +95,13 @@ public sealed class QdrantVectorStore : IVectorStore
                     _collection,
                     new VectorParams { Size = _vectorSize, Distance = Distance.Cosine },
                     cancellationToken: cancellationToken);
+                
+                // Create index on chatId to allow keyword filtering
+                await _client.CreatePayloadIndexAsync(
+                    _collection,
+                    "chatId",
+                    PayloadSchemaType.Keyword,
+                    cancellationToken: cancellationToken);
             }
 
             _collectionReady = true;
