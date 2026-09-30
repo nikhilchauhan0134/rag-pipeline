@@ -297,8 +297,11 @@ function ChatScreen({ chat, hasHistory, draft, pending, model, uploadedFile, upl
       <div className="thread">
         {messages.length === 0 && (
           <div className="welcome">
-            <h1>Welcome</h1>
-            <p>{hasHistory ? "Start a new chat, or open one from History." : "No chats yet. Ask a question to begin."}</p>
+            <h1>Document Analysis RAG</h1>
+            <p style={{ marginTop: "8px", marginBottom: "16px", color: "#666" }}>
+              This AI is specifically designed to answer questions based on your uploaded documents.
+            </p>
+            <p>{hasHistory ? "Upload a document to start a new chat, or open one from History." : "Upload a PDF or text document to begin."}</p>
           </div>
         )}
         {messages.map((message) => (
